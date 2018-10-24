@@ -3,7 +3,7 @@ This Docker image is based on the [yamamuteki/debian-etch-i386](https://github.c
 The main purpose of this docker image is to create a vulnerable environment to exploit [CRIME](https://en.wikipedia.org/wiki/CRIME). To run this image after installing Docker, use a command like this:
 
 ```bash
-$ sudo docker run --rm -p 443:443 jselvi/docker-crime
+$ sudo docker run --rm -p 443:443 jselvi/crime
 ```
 
 Now you can test if we are facing a vulnerable web server by using a tool such as testssl.sh:
