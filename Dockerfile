@@ -7,11 +7,12 @@ USER root
 # Update operating system
 RUN apt-get update && apt-get -y install apache2 openssl ssl-cert ntpdate
 
-# Sync time (not working for automated build on docker hub)
-#RUN ntpdate
+# Sync time
+RUN ntpdate || true
 
 # Create SSL self-signed certificate
-RUN openssl req $@ -new -x509 -days 365000 -nodes -out /etc/apache2/apache.pem -keyout /etc/apache2/apache.pem
+COPY ssl/apache.pem /etc/apache2/apache.pem
+RUN sync
 RUN chmod 600 /etc/apache2/apache.pem
 
 # Upload Apache configuration
